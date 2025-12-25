@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import WorkoutPlan, Workouts, Set
-from Exercises.serializers import ExerciseSerializer
+from exercises.serializers import ExerciseSerializer
 
 class SetSerializer(serializers.ModelSerializer):
     exercise = ExerciseSerializer(read_only=True)
@@ -63,22 +63,13 @@ class WorkoutPlanSerializer(serializers.ModelSerializer):
         source='WorkoutPlan.goal',
         read_only=True
     )
-    user_username = serializers.CharField(
-        source='user.username',
-        read_only=True
-    )
-    trainer_username = serializers.CharField(
-        source='trainer.username',
-        read_only=True,
-    )
+
     
     class Meta:
         model = WorkoutPlan
         fields = [
             'users',
-            'user_username',
             'trainer',
-            'trainer_username',
             'title'
             'goal',
             'goal_display',
@@ -90,23 +81,13 @@ class WorkoutPlanDetailSerializer(serializers.ModelSerializer):
         source='WorkoutPlan.goal',
         read_only=True
     )
-    user_username = serializers.CharField(
-        source='user.username',
-        read_only=True
-    )
-    trainer_username = serializers.CharField(
-        source='trainer.username',
-        read_only=True,
-        allow_null=True
-    )
+
     
     class Meta:
         model = WorkoutPlan
         fields =[
             'users',
-            'user_username',
             'trainer',
-            'trainer_username',
             'title'
             'goal',
             'goal_display',

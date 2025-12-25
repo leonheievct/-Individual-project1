@@ -1,16 +1,16 @@
 from django.db import models
-from Users.models import User
-from Exercises.models import Exercise
+from users.models import UserProfile
+from exercises.models import Exercise
 
 
 """Создаем модель плана тренировки"""
 class WorkoutPlan(models.Model):
 
     """Добавляем пользователя по первичному ключу в нашу модель плана тренировок с помощью класса User из приложения Users"""
-    users = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True,verbose_name='Пользователь')
+    users = models.ForeignKey(UserProfile,on_delete=models.CASCADE,null=True,blank=True,verbose_name='Пользователь')
 
     #Тренер
-    trainer = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True,verbose_name='Тренер')
+    trainer = models.ForeignKey(UserProfile,on_delete=models.CASCADE,null=True,blank=True,verbose_name='Тренер')
 
     #Название
     title = models.CharField(max_length=255,verbose_name='Название плана')

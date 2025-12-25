@@ -1,5 +1,5 @@
 from django.db import models
-from Users.models import User
+from users.models import UserProfile
 
 
 """Создаем модель продукта питания """
@@ -32,7 +32,7 @@ class FoodLog(models.Model):
 
     """Передаем атрибуты нашей модели по первичному ключу из локального класса и класса из другого приложения Users"""
 
-    users = models.ForeignKey(User,on_delete=models.CASCADE)
+    users = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
 
     #Продукт питания
     food_item = models.ForeignKey(FoodItem,on_delete=models.CASCADE)
